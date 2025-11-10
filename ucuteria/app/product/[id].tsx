@@ -8,7 +8,7 @@ export default function ProductDetail() {
   const { id } = useLocalSearchParams();
   const { addToCart } = useCart();
   const router = useRouter();
-  const product = data.products.find((p) => p.id === id);
+  const product = data.products.find((p) => p.id == id);
 
   if (!product) return <Text>Producto no encontrado</Text>;
 

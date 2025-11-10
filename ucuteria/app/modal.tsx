@@ -3,6 +3,7 @@ import { useState } from "react";
 import { View, Text, TextInput, Button, Alert } from "react-native";
 import { useRouter } from "expo-router";
 import { useCart } from "./context/CartContext";
+import { Picker } from "@react-native-picker/picker";
 
 export default function CheckoutModal() {
   const router = useRouter();
@@ -40,7 +41,17 @@ export default function CheckoutModal() {
       <Text>Dirección</Text>
       <TextInput style={{ borderWidth: 1, marginBottom: 8 }} value={form.address} onChangeText={(v) => setForm({ ...form, address: v })} />
       <Text>Método de pago</Text>
-      <TextInput style={{ borderWidth: 1, marginBottom: 8 }} placeholder="Ej: Tarjeta, Efectivo..." value={form.payment} onChangeText={(v) => setForm({ ...form, payment: v })} />
+      <View style={{ borderWidth: 1, borderColor: "#ccc", marginBottom: 12, borderRadius: 5 }}>
+        <Picker
+          selectedValue={form.payment}
+          onValueChange={(itemValue) => setForm({ ...form, payment: itemValue })}
+        >
+          <Picker.Item label="Seleccionar método..." value="" />
+          <Picker.Item label="Tarjeta" value="Tarjeta" />
+          <Picker.Item label="Efectivo" value="Efectivo" />
+          <Picker.Item label="Transferencia" value="Transferencia" />
+        </Picker>
+      </View>
       <Button title="Confirmar pedido" onPress={handleSubmit} />
     </View>
   );
