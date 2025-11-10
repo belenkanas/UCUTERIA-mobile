@@ -5,11 +5,11 @@ export default function TabsLayout() {
   return (
     <Tabs>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{ title: "Inicio", tabBarIcon: ({ color }) => <Home color={color} /> }}
       />
       <Tabs.Screen
-        name="explore"
+        name="cart"
         options={{
           title: "Carrito",
           tabBarIcon: ({ color }) => <ShoppingCart color={color} />,
